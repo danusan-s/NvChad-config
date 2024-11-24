@@ -36,3 +36,33 @@ map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
 
 -- Keymap for opening weblinks
 map("n", "gx", [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]])
+
+local cinnamon = require "cinnamon"
+
+-- Centered scrolling:
+map("n", "<C-U>", function()
+  cinnamon.scroll "<C-U>zz"
+end)
+map("n", "<C-D>", function()
+  cinnamon.scroll "<C-D>zz"
+end)
+map("v", "<C-U>", function()
+  cinnamon.scroll "<C-U>zz"
+end)
+map("v", "<C-D>", function()
+  cinnamon.scroll "<C-D>zz"
+end)
+
+-- LSP:
+map("n", "gd", function()
+  cinnamon.scroll(vim.lsp.buf.definition)
+end)
+map("n", "gD", function()
+  cinnamon.scroll(vim.lsp.buf.declaration)
+end)
+
+-- iron also has a list of commands, see :h iron-commands for all available commands
+map("n", "<space>rs", "<cmd>IronRepl<cr>")
+map("n", "<space>rr", "<cmd>IronRestart<cr>")
+map("n", "<space>rf", "<cmd>IronFocus<cr>")
+map("n", "<space>rh", "<cmd>IronHide<cr>")
