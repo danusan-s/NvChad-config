@@ -56,4 +56,64 @@ return {
       },
     },
   },
+
+  -- Install competitest for easy testing for codeforces
+  {
+    "xeluxee/competitest.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
+    config = function()
+      require "configs.competitest"
+    end,
+    lazy = true,
+    cmd = "CompetiTest",
+  },
+
+  -- Install obsession to save nvim states with tmux ressurect
+  "tpope/vim-obsession",
+
+  -- Copilot to do autocompletion
+  "github/copilot.vim",
+
+  -- Install dressing to create popups for other plugins
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+  },
+
+  -- Install notify for notifications for other plugins
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+  },
+
+  -- Practice vim motions
+  {
+    "theprimeagen/vim-be-good",
+    lazy = true,
+    cmd = "VimBeGood",
+  },
+
+  -- Install hardtime to prevent bad habits
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {},
+    config = function()
+      require "configs.hardtime"
+    end,
+  },
+
+  {
+    "declancm/cinnamon.nvim",
+    config = function()
+      require "configs.cinnamon"
+    end,
+    lazy = true,
+  },
+
+  {
+    "Vigemus/iron.nvim",
+    config = function() end,
+    lazy = true,
+  },
 }
