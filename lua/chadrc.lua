@@ -2,17 +2,6 @@
 -- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
 -- Please read that file to know all available options :(
 
--- Open NVDash when nvim is started with no arguments
--- vim.api.nvim_create_autocmd("VimEnter", {
---   callback = function()
---     if #vim.fn.argv() == 0 then
---       vim.cmd "Nvdash"
---     elseif vim.fn.isdirectory(vim.fn.expand "%:p") == 1 then
---       vim.cmd "NvimTreeToggle"
---     end
---   end,
--- })
-
 ---@type ChadrcConfig
 local M = {}
 
