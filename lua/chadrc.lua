@@ -20,11 +20,15 @@ M.nvdash = {
     { txt = "  Find File", keys = "ff", cmd = "Telescope find_files" },
     { txt = "  Recent Files", keys = "fo", cmd = "Telescope oldfiles" },
     { txt = "󰈭  Find Word", keys = "fw", cmd = "Telescope live_grep" },
-    { txt = "  Open explorer", keys = "e", cmd = ":e .<CR>" },
+    {
+      txt = "  Open explorer",
+      keys = "e",
+      cmd = ":lua require('nvim-tree.api').tree.open({ path = '.', current_window = true })",
+    },
     { txt = "󱥚  Themes", keys = "t", cmd = ":lua require('nvchad.themes').open()" },
     { txt = "  Mappings", keys = "?", cmd = "NvCheatsheet" },
     { txt = "󰄨  Receive contest files", keys = "c", cmd = ":CompetiTest receive contest<CR>" },
-    { txt = "Quit ?", keys = "q", cmd = ":q!" },
+    { txt = "󰩈  Quit ?", keys = "q", cmd = ":q!" },
 
     { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
 
