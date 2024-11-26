@@ -19,13 +19,12 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "<leader>zig", "<cmd>LspRestart<cr>")
 
--- next greatest remap ever : asbjornHaland
+-- Copy into system clipboard
 map({ "n", "v" }, "<leader>y", [["+y]])
 map("n", "<leader>Y", [["+Y]])
 
 map({ "n", "v" }, "<leader>d", [["_d]])
 
-map("n", "Q", "<nop>")
 map("n", "q:", "<nop>")
 
 map("n", "<C-k>", "<cmd>cnext<CR>zz")

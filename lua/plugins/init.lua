@@ -102,7 +102,7 @@ return {
   {
     "declancm/cinnamon.nvim",
     config = function()
-      require "configs.cinnamon"
+      require("cinnamon").setup()
     end,
     lazy = true,
   },
