@@ -33,7 +33,7 @@ map("n", "<C-j>", "<cmd>cprev<CR>zz")
 map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
 
 -- Keymap for opening weblinks
-map("n", "gx", [[:execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]])
+map("n", "gx", [[:execute '!xdg-open ' . shellescape(expand('<cfile>'), 1)<CR>]])
 
 local cinnamon = require "cinnamon"
 
