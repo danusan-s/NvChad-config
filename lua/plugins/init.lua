@@ -1,25 +1,40 @@
 local function open_nvim_tree(data)
-  local directory = vim.fn.isdirectory(data.file) == 1
+  local is_directory = vim.fn.isdirectory(data.file) == 1
 
-  if not directory then
-    return
+  if is_directory then
+    vim.cmd.cd(data.file)
+    require("nvim-tree.api").tree.open()
+  else
+    local parent_dir = vim.fn.fnamemodify(data.file, ":h")
+    vim.cmd.cd(parent_dir)
   end
-
-  vim.cmd.cd(data.file)
-
-  require("nvim-tree.api").tree.open()
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 return {
   {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      mapping = {
+        -- disable  tab
+        ["<Tab>"] = function(callback)
+          callback()
+        end,
+
+        ["<S-Tab>"] = function(callback)
+          callback()
+        end,
+      },
+    },
+  },
+
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -62,7 +77,11 @@ return {
   "tpope/vim-obsession",
 
   -- Copilot to do autocompletion
-  "github/copilot.vim",
+  {
+    "github/copilot.vim",
+    cmd = "Copilot",
+    lazy = false,
+  },
 
   -- Install dressing to create popups for other plugins
   {
@@ -72,8 +91,16 @@ return {
 
   -- Install notify for notifications for other plugins
   {
-    "rcarriga/nvim-notify",
+    "folke/noice.nvim",
     event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require "configs.noice"
+    end,
   },
 
   -- Practice vim motions
@@ -109,7 +136,24 @@ return {
 
   {
     "Vigemus/iron.nvim",
-    config = function() end,
-    lazy = true,
+    config = function()
+      require "configs.iron"
+    end,
+    lazy = false,
+  },
+
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1001,
+    opts = {
+      rocks = { "magick" },
+    },
+    lazy = false,
+  },
+  {
+    "3rd/image.nvim",
+    dependencies = { "luarocks.nvim" },
+    opts = {},
+    lazy = false,
   },
 }

@@ -3,11 +3,13 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
-    javascript = {"prettier"},
-    typescript = {"prettier"},
-    c = {"clang-format"},
-    cpp = {"clang-format"},
-    python = {"black"}
+    javascript = { "prettier" },
+    typescript = { "prettier" },
+    jsx = { "prettier" },
+    typescriptreact = { "prettier" },
+    c = { "clang-format" },
+    cpp = { "clang-format" },
+    python = { "black" },
   },
 
   format_on_save = {

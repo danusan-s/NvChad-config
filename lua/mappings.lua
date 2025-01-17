@@ -30,8 +30,6 @@ map("n", "q:", "<nop>")
 map("n", "<C-k>", "<cmd>cnext<CR>zz")
 map("n", "<C-j>", "<cmd>cprev<CR>zz")
 
-map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
-
 -- Keymap for opening weblinks
 map("n", "gx", [[:execute '!xdg-open ' . shellescape(expand('<cfile>'), 1)<CR>]])
 
