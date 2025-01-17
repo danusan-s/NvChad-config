@@ -6,17 +6,8 @@ local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
-
 map("n", "J", "mzJ`z")
 
--- Do this in cinnamon plugin
--- map("n", "<C-u>", "<C-u>zz")
--- map("n", "<C-d>", "<C-d>zz")
-
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
 map("n", "<leader>zig", "<cmd>LspRestart<cr>")
 
 -- Copy into system clipboard
@@ -36,17 +27,17 @@ map("n", "gx", [[:execute '!xdg-open ' . shellescape(expand('<cfile>'), 1)<CR>]]
 local cinnamon = require "cinnamon"
 
 -- Centered scrolling:
-map("n", "<C-U>", function()
+map({ "n", "v" }, "<C-U>", function()
   cinnamon.scroll "<C-U>zz"
 end)
-map("n", "<C-D>", function()
+map({ "n", "v" }, "<C-D>", function()
   cinnamon.scroll "<C-D>zz"
 end)
-map("v", "<C-U>", function()
-  cinnamon.scroll "<C-U>zz"
+map({ "n", "v" }, "n", function()
+  cinnamon.scroll "nzz"
 end)
-map("v", "<C-D>", function()
-  cinnamon.scroll "<C-D>zz"
+map({ "n", "v" }, "N", function()
+  cinnamon.scroll "Nzz"
 end)
 
 -- LSP:

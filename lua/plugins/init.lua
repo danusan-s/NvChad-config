@@ -120,26 +120,16 @@ return {
       { "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"' },
     },
     opts = {},
-    cmd = "Hardtime",
     config = function()
       require "configs.hardtime"
     end,
   },
-
-  {
-    "declancm/cinnamon.nvim",
-    config = function()
-      require("cinnamon").setup()
-    end,
-    lazy = true,
-  },
-
   {
     "Vigemus/iron.nvim",
     config = function()
       require "configs.iron"
     end,
-    lazy = false,
+    event = "VeryLazy",
   },
 
   {
@@ -154,6 +144,67 @@ return {
     "3rd/image.nvim",
     dependencies = { "luarocks.nvim" },
     opts = {},
-    lazy = false,
+    event = "VeryLazy",
+  },
+  {
+    "echasnovski/mini.cursorword",
+    version = false,
+    event = "VeryLazy",
+    config = function()
+      require("mini.cursorword").setup()
+    end,
+  },
+  {
+    "echasnovski/mini.animate",
+    version = false,
+    event = "VeryLazy",
+    config = function()
+      require("mini.animate").setup {
+        cursor = {
+          enable = false,
+        },
+        scroll = {
+          enable = false,
+        },
+      }
+    end,
+  },
+  {
+    "declancm/cinnamon.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("cinnamon").setup()
+    end,
+  },
+  {
+    "echasnovski/mini.surround",
+    version = false,
+    event = "VeryLazy",
+    config = function()
+      require("mini.surround").setup()
+    end,
+  },
+  {
+    "echasnovski/mini.move",
+    version = false,
+    event = "VeryLazy",
+    config = function()
+      require("mini.move").setup {
+        mappings = {
+          -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+          left = "H",
+          right = "L",
+          down = "J",
+          up = "K",
+
+          -- Move current line in Normal mode
+          line_left = "<M-h>",
+          line_right = "<M-l>",
+          line_down = "<M-j>",
+          line_up = "<M-k>",
+        },
+      }
+    end,
   },
 }
