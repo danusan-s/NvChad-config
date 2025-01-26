@@ -4,8 +4,6 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
-
 map("n", "J", "mzJ`z")
 
 map("n", "<leader>zig", "<cmd>LspRestart<cr>")

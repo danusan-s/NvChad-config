@@ -58,6 +58,7 @@ return {
         "typescript",
         "markdown",
         "markdown_inline",
+        "latex",
       },
     },
   },
@@ -199,12 +200,40 @@ return {
           up = "K",
 
           -- Move current line in Normal mode
-          line_left = "<M-h>",
-          line_right = "<M-l>",
+          line_right = "",
+          line_left = "",
           line_down = "<M-j>",
           line_up = "<M-k>",
         },
       }
+    end,
+  },
+
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
+
+  {
+    "lervag/vimtex",
+    lazy = false,
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_compiler_method = "tectonic"
+    end,
+  },
+
+  {
+    "iurimateus/luasnip-latex-snippets.nvim",
+    dependencies = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
+    config = function()
+      require("luasnip-latex-snippets").setup()
+      require("luasnip").config.setup { enable_autosnippets = true }
     end,
   },
 }
